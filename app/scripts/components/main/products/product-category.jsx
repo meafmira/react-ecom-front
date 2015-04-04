@@ -1,12 +1,43 @@
 import React from 'react'
 import ProductThumb from 'components/main/products/product-thumb'
+import CategoryActions from 'actions/category'
+import CategoryStore from 'stores/category'
 
 export default class ProductCategory extends React.Component {
-  render () {
-    let category = {
-      title: "Планшеты",
-      description: "Cursus dis et enim dignissim!"
+  constructor() {
+    this.categoryLoaded = this.categoryLoaded.bind(this);
+    this.state = {
+      category: {
+        title: "",
+        description: ""
+      }
     };
+  }
+
+  static willTransitionTo(transition, params) {
+    this.categoryId = params.categoryId;
+    CategoryActions.load(this.categoryId);
+  }
+
+  categoryLoaded(category) {
+    this.setState({category});
+  }
+
+  componentDidMount() {
+    this.loadCategory();
+    this.unsubscribe = CategoryStore.listen(this.categoryLoaded);
+  }
+
+  loadCategory() {
+
+  }
+
+  componentWillUnmount() {
+    this.unsubscribe();
+  }
+
+  render () {
+    let category = this.state.category;
     let categoryDescription = false;
     let product = {
       img: "http://avtech.uz/3086-home_default/planshet-acer-iconia-tab-7-a1-713.jpg",

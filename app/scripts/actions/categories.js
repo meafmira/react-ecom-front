@@ -5,7 +5,7 @@ let CategoriesActions = Reflux.createActions({
   loadAll: { asyncResult: true }
 });
 
-CategoriesActions.loadAll.listen(function () {
+CategoriesActions.loadAll.listen(function (test) {
   Api.get('categories')
     .then(this.completed)
     .catch(this.completed);
