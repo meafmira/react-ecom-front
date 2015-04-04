@@ -1,21 +1,34 @@
 import React from 'react'
 import { Link } from 'react-router'
+import CategoriesActions from 'actions/categories'
+import CategoriesStore from 'stores/categories'
 
 export default class ProductCategories extends React.Component {
+  constructor() {
+    this.state = { categories: [] };
+    this.categoriesLoaded = this.categoriesLoaded.bind(this);
+  }
+
+  categoriesLoaded(categories) {
+    this.setState({categories: categories});
+  }
+
+  componentDidMount() {
+    CategoriesActions.loadAll();
+    this.unsubscribeCategories = CategoriesStore.listen(this.categoriesLoaded);
+  }
+
+  componentWillUnmount() {
+    this.unsubscribeCategories();
+  }
+
   render () {
-    let categories = [
-      {
-        title: "Планшеты"
-      },
-      {
-        title: "Мобильные телефоны"
-      }
-    ];
+    let categories = this.state.categories;
 
     let categoryList = categories.map(category => {
       return (
         <li>
-          <Link to="product-category">{category.title}</Link>
+          <Link to="product-category" params={{ categoryId: category.id }}>{category.title}</Link>
         </li>
       )
     });

@@ -16,7 +16,7 @@ var routes = (
     <Route name="page" handler={Page} />
     <Route name="products" handler={Product} />
     <Route name="category" handler={PostsCategory} />
-    <Route name="product-category" handler={ProductCategory} />
+    <Route name="product-category" path="categories/:categoryId" handler={ProductCategory} />
 	</Route>
 );
 
