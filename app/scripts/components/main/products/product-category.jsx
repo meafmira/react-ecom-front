@@ -25,7 +25,6 @@ export default class ProductCategory extends React.Component {
   }
 
   componentDidMount() {
-    this.loadCategory();
     this.unsubscribe = CategoryStore.listen(this.categoryLoaded);
   }
 
