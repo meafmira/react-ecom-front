@@ -9,7 +9,8 @@ export default class ProductCategory extends React.Component {
     this.state = {
       category: {
         title: "",
-        description: ""
+        description: "",
+        products: []
       }
     };
   }
@@ -28,10 +29,6 @@ export default class ProductCategory extends React.Component {
     this.unsubscribe = CategoryStore.listen(this.categoryLoaded);
   }
 
-  loadCategory() {
-
-  }
-
   componentWillUnmount() {
     this.unsubscribe();
   }
@@ -39,39 +36,25 @@ export default class ProductCategory extends React.Component {
   render () {
     let category = this.state.category;
     let categoryDescription = false;
-    let product = {
-      img: "http://avtech.uz/3086-home_default/planshet-acer-iconia-tab-7-a1-713.jpg",
-      title: "ACER TM8473-32374G50",
-      shortDescription: "-5% Ноутбук ACER TM8473-32374G50 Mnkk 14.0\" / CPU Core i3-2370M / DDR 4 GB / HDD 500 GB"
-    };
 
     if (category.description != "") {
       categoryDescription = <p className="lead">{ category.description }</p>
     }
+
+    let categoryProducts = category.products.map(product => {
+      return (
+        <div className="col-md-4" key={ product.id }>
+          <ProductThumb product={product} />
+        </div>
+      );
+    })
 
     return (
       <div>
         <h1 className="page-header">{ category.title }</h1>
         { categoryDescription }
         <div className="row">
-          <div className="col-md-4">
-            <ProductThumb product={product} />
-          </div>
-          <div className="col-md-4">
-            <ProductThumb product={product} />
-          </div>
-          <div className="col-md-4">
-            <ProductThumb product={product} />
-          </div>
-          <div className="col-md-4">
-            <ProductThumb product={product} />
-          </div>
-          <div className="col-md-4">
-            <ProductThumb product={product} />
-          </div>
-          <div className="col-md-4">
-            <ProductThumb product={product} />
-          </div>
+          { categoryProducts }
         </div>
       </div>
     )
