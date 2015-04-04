@@ -1,0 +1,22 @@
+import React from 'react'
+
+export default class Page extends React.Component {
+  render () {
+    let page = {
+      title: "Page title",
+      text: `
+        <p>Porta et porta aliquam amet dictumst amet penatibus, integer, lorem egestas! Nisi sit rhoncus pulvinar dolor amet tortor! Porttitor nec mauris massa sed phasellus, phasellus, tristique integer odio, cursus ac aenean tristique, in, sit lundium massa augue nec elementum, et amet lorem? Proin ridiculus porttitor vel, scelerisque! Augue! Turpis odio placerat habitasse adipiscing, montes ac lundium, lundium? Vel! Magna purus tortor ac egestas, etiam vel pid platea nunc cum pulvinar, nec adipiscing parturient tincidunt parturient pellentesque dictumst scelerisque dis urna placerat lundium placerat, integer penatibus! Sed aliquet a! Sagittis placerat. Mid turpis. Turpis enim amet, elit? Sociis elit montes nec ut vut turpis facilisis ac. Platea turpis massa, tincidunt massa? Urna ultrices, eros egestas. Etiam pellentesque non, odio duis elementum.</p>
+        <p>Tincidunt, diam a montes. Cum a mauris mus? Augue tincidunt rhoncus, mid amet urna, etiam auctor risus ultrices placerat nunc diam? Lacus tincidunt. Integer. Dolor adipiscing nec et magna auctor, auctor magna a integer integer habitasse et sed! Adipiscing dis, vel, tristique dolor nunc ut nec, aliquam ac hac a placerat nascetur integer, phasellus odio, egestas! Scelerisque platea odio aenean diam aliquam magnis? Tempor et odio porta magna ridiculus elementum nisi, adipiscing enim magna? Enim cras et! Vel et? Dictumst, lacus porta. Vut natoque amet quis sed. Porttitor a. Pulvinar in, ac porttitor quis habitasse, urna mus magna ultricies, hac nisi. Platea massa! Quis. Aenean sociis ac in vel a et amet dolor? Tempor urna ridiculus velit non in.</p>
+        <p>Etiam facilisis! Urna est tincidunt, integer mattis? Augue. Ac ut! Dictumst cursus lacus mauris, tincidunt cras pellentesque eros sagittis cras pulvinar elementum rhoncus enim integer aliquam? Magna in lorem? Ac ac nunc elementum aenean egestas, integer? Ut elementum. Proin adipiscing aenean parturient aliquet urna. Sit magna enim! Mus et tortor etiam turpis platea. Porttitor, nec mauris tempor enim pulvinar? Purus? Elit eu vel? Mattis. Mattis! Duis integer nisi et amet diam elit mid adipiscing, pulvinar pulvinar montes dolor est. Et elit integer nascetur cum porta a habitasse, dapibus purus elementum in proin aenean lundium platea turpis dis pid, velit cursus porta mus, adipiscing augue ut nisi sagittis! Sociis. Rhoncus magna lacus lundium enim amet tincidunt, sit cum odio cras.</p>
+        <p>Tristique nec a natoque natoque platea urna, aliquet mattis, aliquet nisi, turpis ut natoque enim ac vel. Turpis amet? Etiam et, dignissim parturient phasellus elementum arcu a, porttitor ac mus eros turpis amet, massa ut hac amet lorem sed, elit sociis elementum. Quis dolor in tempor a adipiscing porta magnis ac elementum turpis, pulvinar ac in parturient augue turpis adipiscing turpis est? Turpis, duis! Mauris, lectus, enim proin, ridiculus, risus? Tincidunt purus eu aliquam augue tincidunt risus ultricies habitasse, tincidunt est est amet? Pulvinar turpis? Ac a! A porta, tristique in placerat pellentesque hac, montes diam ut tristique sed vel habitasse sed eros! Porta? Ut non cursus? Ridiculus rhoncus, turpis integer! Pid porttitor dis amet, scelerisque turpis lorem auctor.</p>
+        <p>Arcu est sit. Proin in, nunc odio, augue odio placerat nisi mid porttitor nunc! Vel ac! Nunc, aliquet nascetur scelerisque! Velit cursus hac. Sociis, risus pid purus magnis! Turpis, sagittis proin. Augue! Turpis nisi. Porta, arcu lectus in lorem nec porttitor, nec turpis porta? Quis pulvinar, scelerisque! Dapibus ac natoque? Magna, adipiscing porta tincidunt ut? Integer pulvinar dictumst. Turpis, aliquam integer sociis! Ac, porta a nascetur mauris et! Ultrices ut ridiculus. Pellentesque, dis pid purus nec dignissim odio eu! Sit, tincidunt tincidunt est, magna ultrices scelerisque tempor proin tincidunt? Elementum nisi. Integer, tempor adipiscing integer dignissim parturient lectus, integer ut. Purus, sagittis. Nunc vel odio mus pellentesque? Odio, egestas ultrices vel, ridiculus egestas, rhoncus sed! Diam, urna, in in.</p>
+      `
+    };
+    return (
+      <div>
+        <h1 className="page-header">{ page.title }</h1>
+        <div dangerouslySetInnerHTML={ { __html: page.text } }></div>
+      </div>
+    )
+  }
+}
