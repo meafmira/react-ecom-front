@@ -14,7 +14,7 @@ var routes = (
 	<Route name="main" path="/" handler={Layout}>
 		<DefaultRoute handler={Home} />
     <Route name="page" handler={Page} />
-    <Route name="products" handler={Product} />
+    <Route name="product" path="products/:productId" handler={Product} />
     <Route name="category" handler={PostsCategory} />
     <Route name="product-category" path="categories/:categoryId" handler={ProductCategory} />
 	</Route>

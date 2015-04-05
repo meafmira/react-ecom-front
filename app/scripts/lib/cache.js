@@ -2,11 +2,18 @@ let cache = {};
 
 export default {
   setItem: (key, value) => {
-    console.log('Cache: ', cache);
-    cache[key] = value;
+    sessionStorage.setItem(key, JSON.stringify(value));
   },
 
   getItem: (key) => {
-    return cache[key];
+    let item = sessionStorage.getItem(key)
+      , parsedItem;
+    try {
+      parsedItem = JSON.parse(item);
+    }
+    catch (e) {
+      return null;
+    }
+    return parsedItem;
   }
 }
