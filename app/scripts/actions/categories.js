@@ -8,7 +8,7 @@ let CategoriesActions = Reflux.createActions({
 CategoriesActions.loadAll.listen(function (test) {
   Api.get('categories')
     .then(this.completed)
-    .catch(this.completed);
+    .catch(this.failed);
 });
 
 export default CategoriesActions;

@@ -31,3 +31,7 @@ body {
 .page-header {
   margin-top: 0;
 }
+
+.tab-content {
+  padding-top: 10px;
+}
