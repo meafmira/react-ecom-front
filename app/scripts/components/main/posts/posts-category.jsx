@@ -45,7 +45,9 @@ class PostsCategory extends React.Component {
           <div className="media-body">
             <h4 className="media-heading">{ post.title }</h4>
             <p>{ post.shortText }</p>
-            <Link to="page">читать</Link>
+            {
+              //<Link to="page">читать</Link>
+            }
           </div>
           <hr />
         </div>

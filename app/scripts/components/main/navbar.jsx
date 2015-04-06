@@ -19,22 +19,22 @@ export default class Navbar extends React.Component {
           <div className="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul className="nav navbar-nav">
               <li>
-                <Link to="page">Рассрочка</Link>
+                <Link to="page" params={{ pageId: 1 }}>Рассрочка</Link>
               </li>
               <li>
-                <Link to="page">Сервис-центр</Link>
+                <Link to="page" params={{ pageId: 2 }}>Сервис-центр</Link>
               </li>
               <li>
-                <Link to="page">Бонусы</Link>
+                <Link to="page" params={{ pageId: 3 }}>Бонусы</Link>
               </li>
               <li>
-                <Link to="page">О нас</Link>
+                <Link to="page" params={{ pageId: 4 }}>О нас</Link>
               </li>
               <li>
                 <Link to="category">Новости</Link>
               </li>
               <li>
-                <Link to="page">Оплата и доставка</Link>
+                <Link to="page" params={{ pageId: 5 }}>Оплата и доставка</Link>
               </li>
             </ul>
             <form className="navbar-form navbar-left" role="search">

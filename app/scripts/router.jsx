@@ -13,7 +13,7 @@ import ProductCategory from 'components/main/products/product-category'
 var routes = (
 	<Route name="main" path="/" handler={Layout}>
 		<DefaultRoute handler={Home} />
-    <Route name="page" handler={Page} />
+    <Route name="page" path="page/:pageId" handler={Page} />
     <Route name="product" path="products/:productId" handler={Product} />
     <Route name="category" handler={PostsCategory} />
     <Route name="product-category" path="categories/:categoryId" handler={ProductCategory} />
