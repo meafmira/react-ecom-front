@@ -31,7 +31,7 @@ export default class Navbar extends React.Component {
                 <Link to="page" params={{ pageId: 4 }}>О нас</Link>
               </li>
               <li>
-                <Link to="category">Новости</Link>
+                <Link to="post-category" params={{ categoryId: 1 }}>Новости</Link>
               </li>
               <li>
                 <Link to="page" params={{ pageId: 5 }}>Оплата и доставка</Link>

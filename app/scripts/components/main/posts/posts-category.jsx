@@ -1,40 +1,35 @@
 import React from 'react'
 import { Link } from 'react-router'
 
+import PostCategoryActions from 'actions/post-category'
+import PostCategoryStore from 'stores/post-category'
+
 class PostsCategory extends React.Component {
-  render() {
-    console.log("Render");
-    let category = {
-      title: "Новости"
-    };
-    let posts = [
-      {
-        title: "Уникальная возможность приобрести планшеты Acer в рассрочку, на льготных условиях!!!!!",
-        img: "http://avtech.uz/modules/prestapress/uploads/timthumb.php?src=/modules/prestapress/uploads/51/59.jpg&w=84",
-        shortText: "Уникальная возможность приобрести планшеты Acer в рассрочку, на льготных условиях!!!!!"
-      },
-      {
-        title: "Уникальная возможность приобрести планшеты Acer в рассрочку, на льготных условиях!!!!!",
-        img: "http://avtech.uz/modules/prestapress/uploads/timthumb.php?src=/modules/prestapress/uploads/51/59.jpg&w=84",
-        shortText: "Уникальная возможность приобрести планшеты Acer в рассрочку, на льготных условиях!!!!!"
-      },
-      {
-        title: "Уникальная возможность приобрести планшеты Acer в рассрочку, на льготных условиях!!!!!",
-        img: "http://avtech.uz/modules/prestapress/uploads/timthumb.php?src=/modules/prestapress/uploads/51/59.jpg&w=84",
-        shortText: "Уникальная возможность приобрести планшеты Acer в рассрочку, на льготных условиях!!!!!"
-      },
-      {
-        title: "Уникальная возможность приобрести планшеты Acer в рассрочку, на льготных условиях!!!!!",
-        img: "http://avtech.uz/modules/prestapress/uploads/timthumb.php?src=/modules/prestapress/uploads/51/59.jpg&w=84",
-        shortText: "Уникальная возможность приобрести планшеты Acer в рассрочку, на льготных условиях!!!!!"
-      },
-      {
-        title: "Уникальная возможность приобрести планшеты Acer в рассрочку, на льготных условиях!!!!!",
-        img: "http://avtech.uz/modules/prestapress/uploads/timthumb.php?src=/modules/prestapress/uploads/51/59.jpg&w=84",
-        shortText: "Уникальная возможность приобрести планшеты Acer в рассрочку, на льготных условиях!!!!!"
+  constructor() {
+    this.onLoadCategory = this.onLoadCategory.bind(this);
+    this.state = {
+      category: {
+        title: 'Загрузка...',
+        posts: []
       }
-    ];
-    let postsList = posts.map(post => {
+    }
+  }
+
+  static willTransitionTo(_, params) {
+    PostCategoryActions.loadOne(params.categoryId);
+  }
+
+  componentDidMount() {
+    this.unsubscribe = PostCategoryStore.listen(this.onLoadCategory);
+  }
+
+  onLoadCategory(category) {
+    this.setState({category});
+  }
+
+  render() {
+    let category = this.state.category;
+    let postsList = category.posts.map(post => {
       return (
         <div className="media" key={ post.id }>
           <div className="media-left">

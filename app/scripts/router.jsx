@@ -15,7 +15,7 @@ var routes = (
 		<DefaultRoute handler={Home} />
     <Route name="page" path="page/:pageId" handler={Page} />
     <Route name="product" path="products/:productId" handler={Product} />
-    <Route name="category" handler={PostsCategory} />
+    <Route name="post-category" path="post-categories/:categoryId" handler={PostsCategory} />
     <Route name="product-category" path="categories/:categoryId" handler={ProductCategory} />
 	</Route>
 );
