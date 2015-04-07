@@ -3,8 +3,8 @@ require('isomorphic-fetch');
 
 
 import Router from 'router.jsx';
-import Pace from 'pace/pace';
+//import Pace from 'pace/pace';
 import $ from 'jquery';
 
-Pace.start()
+//Pace.start()
 Router.start();
