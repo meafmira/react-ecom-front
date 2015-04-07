@@ -1,6 +1,6 @@
-import Reflux from 'reflux'
-import Api from 'lib/api'
-import Cache from 'lib/cache'
+import Reflux from 'reflux';
+import Api from 'lib/api';
+import Cache from 'lib/cache';
 
 let CategoryActions = Reflux.createActions({
   load: { asyncResult: true }

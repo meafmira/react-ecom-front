@@ -1,9 +1,11 @@
 import Reflux from 'reflux';
 import CategoriesActions from 'actions/categories';
 
-export default Reflux.createStore({
+let HomeCategoriesStore = Reflux.createStore({
   listenables: CategoriesActions,
-  onLoadAllCompleted(categories) {
+  onLoadHomeCategoriesCompleted(categories) {
     this.trigger(categories);
   }
 });
+
+export default HomeCategoriesStore
