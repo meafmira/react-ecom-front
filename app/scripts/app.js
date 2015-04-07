@@ -1,9 +1,10 @@
 require('babel/polyfill');
-require('isomorphic-fetch');
+require('whatwg-fetch');
 
-import Router from 'router.jsx'
-import Pace from 'pace/pace'
-import $ from 'jquery'
+
+import Router from 'router.jsx';
+import Pace from 'pace/pace';
+import $ from 'jquery';
 
 Pace.start()
 Router.start();

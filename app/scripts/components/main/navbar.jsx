@@ -48,6 +48,9 @@ export default class Navbar extends React.Component {
               <li>
                 <CartLink />
               </li>
+              <li>
+                <Link to="login">Войти</Link>
+              </li>
             </ul>
           </div>
         </div>

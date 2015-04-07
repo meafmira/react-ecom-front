@@ -11,6 +11,7 @@ import PostsCategory from 'components/main/posts/posts-category';
 import ProductCategory from 'components/main/products/product-category';
 import Post from 'components/main/post';
 import Cart from 'components/main/cart/cart';
+import Login from 'components/main/user/login';
 
 var routes = (
 	<Route name="main" path="/" handler={Layout}>
@@ -21,6 +22,7 @@ var routes = (
 		<Route name="post" path="posts/:postId" handler={Post} />
     <Route name="product-category" path="categories/:categoryId" handler={ProductCategory} />
 		<Route name="cart" handler={Cart} />
+		<Route name="login" handler={Login} />
 	</Route>
 );
 
