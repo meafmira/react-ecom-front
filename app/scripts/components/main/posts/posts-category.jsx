@@ -1,8 +1,8 @@
-import React from 'react'
-import { Link } from 'react-router'
+import React from 'react';
+import { Link } from 'react-router';
 
-import PostCategoryActions from 'actions/post-category'
-import PostCategoryStore from 'stores/post-category'
+import PostCategoryActions from 'actions/post-category';
+import PostCategoryStore from 'stores/post-category';
 
 class PostsCategory extends React.Component {
   constructor() {
@@ -33,15 +33,15 @@ class PostsCategory extends React.Component {
       return (
         <div className="media" key={ post.id }>
           <div className="media-left">
-            <a href="#">
+            <Link to="post" params={{ postId: post.id }}>
               <img className="media-object" src={ post.img } alt="..." />
-            </a>
+            </Link>
           </div>
           <div className="media-body">
-            <h4 className="media-heading">{ post.title }</h4>
+            <h4 className="media-heading"><Link to="post" params={{ postId: post.id }}>{ post.title }</Link></h4>
             <p>{ post.shortText }</p>
             {
-              //<Link to="page">читать</Link>
+              <Link to="post" params={{ postId: post.id }}>читать</Link>
             }
           </div>
           <hr />

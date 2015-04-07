@@ -1,6 +1,7 @@
-import React from 'react'
-import PageActions from 'actions/pages'
-import PageStore from 'stores/page'
+import React from 'react';
+import PageActions from 'actions/pages';
+import PageStore from 'stores/page';
+import TextPage from 'components/main/text-page'
 
 export default class Page extends React.Component {
   constructor() {
@@ -23,10 +24,7 @@ export default class Page extends React.Component {
   render () {
     let page = this.state.page;
     return (
-      <div>
-        <h1 className="page-header">{ page.title }</h1>
-        <div dangerouslySetInnerHTML={ { __html: page.text } }></div>
-      </div>
+      <TextPage page={page} />
     )
   }
 }

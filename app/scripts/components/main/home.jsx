@@ -2,6 +2,7 @@ import React from 'react';
 import ProductThumb from 'components/main/products/product-thumb';
 import HomeCategoriesStore from 'stores/home-categories';
 import CategoriesActions from 'actions/categories';
+import { Link } from 'react-router';
 
 class Home extends React.Component {
   constructor() {
@@ -38,7 +39,7 @@ class Home extends React.Component {
       return (
         <div className="panel panel-default">
           <div className="panel-heading">
-            { category.title }
+            <Link to="product-category" params={{ categoryId: category.id }}>{ category.title }</Link>
           </div>
           <div className="panel-body">
             <div className="row">
