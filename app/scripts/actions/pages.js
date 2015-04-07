@@ -1,5 +1,5 @@
-import Reflux from 'reflux'
-import Api from 'lib/Api'
+import Reflux from 'reflux';
+import Api from 'lib/api';
 
 let PageActions = Reflux.createActions({
   loadOne: { asyncResult: true }
