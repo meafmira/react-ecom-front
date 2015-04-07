@@ -3,6 +3,7 @@ import { TabbedArea, TabPane } from 'react-bootstrap';
 import RandomCategoryProducts from 'components/main/products/random-category-products';
 import ProductActions from 'actions/product';
 import ProductStore from 'stores/product';
+import LightBox from 'components/common/lightbox';
 
 export default class Product extends React.Component {
   constructor() {
@@ -40,9 +41,20 @@ export default class Product extends React.Component {
           <h1 className="page-header">{ product.title }</h1>
           <div className="row">
             <div className="col-md-4">
-              <img src={ product.images[0].path } className="img-responsive" />
+              <img src={ product.thumb.path } className="img-responsive" />
             </div>
             <div className="col-md-8">
+              <div className="row">
+              {
+                product.images.map(image => {
+                  return (
+                    <div className="col-md-3">
+                      <LightBox src={ image.path } className="img-responsive" />
+                    </div>
+                  )
+                })
+              }
+              </div>
             </div>
           </div>
           <div className="row">

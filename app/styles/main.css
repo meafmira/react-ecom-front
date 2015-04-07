@@ -43,3 +43,7 @@ body {
 .product-thumb-image {
   height: 200px !important;
 }
+
+.lightbox-trigger {
+  cursor: pointer;
+}
