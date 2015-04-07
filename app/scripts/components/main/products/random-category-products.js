@@ -24,7 +24,7 @@ export default class RandomCategoryProducts extends React.Component {
     let productList = products.map(product => {
       if (product.id != excludeProductId) {
         return (
-          <div className="col-md-4">
+          <div className="col-md-4" key={ product.id }>
             <ProductThumb product={ product } key={ product.id } />
           </div>
         )

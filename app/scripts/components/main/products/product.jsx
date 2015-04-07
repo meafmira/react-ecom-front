@@ -4,6 +4,7 @@ import RandomCategoryProducts from 'components/main/products/random-category-pro
 import ProductActions from 'actions/product';
 import ProductStore from 'stores/product';
 import LightBox from 'components/common/lightbox';
+import BuyForm from 'components/main/products/buy-form'
 
 export default class Product extends React.Component {
   constructor() {
@@ -48,7 +49,7 @@ export default class Product extends React.Component {
               {
                 product.images.map(image => {
                   return (
-                    <div className="col-md-3">
+                    <div className="col-md-3" key={ image.id }>
                       <LightBox src={ image.path } className="img-responsive" />
                     </div>
                   )
@@ -68,13 +69,21 @@ export default class Product extends React.Component {
                   { paramsTable }
                   </table>
                 </TabPane>
+                <TabPane eventKey={3} tab="Купить">
+                  <BuyForm product={ product } />
+                </TabPane>
               </TabbedArea>
             </div>
           </div>
-          <div className="panel panel-default">
-            <div className="panel-heading">Похожие товары</div>
-            <div className="panel-body">
-              <RandomCategoryProducts categoryId={ product.category.id } excludeProductId={ product.id } />
+          <hr />
+          <div className="row">
+            <div className="col-md-12">
+              <div className="panel panel-default">
+                <div className="panel-heading">Похожие товары</div>
+                <div className="panel-body">
+                  <RandomCategoryProducts categoryId={ product.category.id } excludeProductId={ product.id } />
+                </div>
+              </div>
             </div>
           </div>
         </div>
