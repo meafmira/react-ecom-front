@@ -24,7 +24,9 @@ export default class Cart extends React.Component {
 
   render() {
     let cart = this.state.cart;
+    let totalPrice = 0;
     let itemList = cart.items.map(item => {
+      totalPrice += item.price * item.count;
       return (
         <tr key={item.id}>
           <td width="100"><img className="img-responsive" src={ item.thumb.path } /></td>
@@ -46,6 +48,10 @@ export default class Cart extends React.Component {
             <th>Цена</th>
           </tr>
           { itemList }
+          <tr>
+            <th className="text-right" colSpan="3">Итого</th>
+            <th>{ totalPrice }</th>
+          </tr>
         </table>
       </div>
     )

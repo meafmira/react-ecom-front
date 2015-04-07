@@ -1,4 +1,9 @@
-export default {
+let Api = {
+  headers: {
+    'Accept': 'application/json',
+    'Content-Type': 'application/json'
+  },
+
   path(path) {
     return `http://ecom/api/v1/${path}`;
   },
@@ -8,10 +13,7 @@ export default {
       fetch(this.path(path), {
         method: 'post',
         body: JSON.stringify(data),
-        headers: {
-          'Accept': 'application/json',
-          'Content-Type': 'application/json'
-        }
+        headers: Api.headers
       })
       .then(res => {
         if (/^2..$/.test(res.status)) {
@@ -39,8 +41,10 @@ export default {
   },
 
   get(path) {
-    return fetch(this.path(path)).then(res => {
+    return fetch(this.path(path), { headers: Api.headers }).then(res => {
       return res.json()
     });
   }
 }
+
+export default Api;

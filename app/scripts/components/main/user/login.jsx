@@ -30,6 +30,9 @@ export default class Login extends React.Component {
     if (data.error) {
       this.setState({ error: data.error });
     }
+    else {
+      
+    }
   }
 
   render() {

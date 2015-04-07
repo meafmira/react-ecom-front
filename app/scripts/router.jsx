@@ -12,6 +12,14 @@ import ProductCategory from 'components/main/products/product-category';
 import Post from 'components/main/post';
 import Cart from 'components/main/cart/cart';
 import Login from 'components/main/user/login';
+import UserActions from 'actions/user';
+import Api from 'lib/api';
+
+if (localStorage.token) {
+	Api.headers.Authorization = `Bearer ${localStorage.token}`;
+}
+
+UserActions.loadCurrentUser();
 
 var routes = (
 	<Route name="main" path="/" handler={Layout}>

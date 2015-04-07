@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router';
 import CartStore from 'stores/cart';
 import CartLink from 'components/main/cart/cart-link';
+import LoginLink from 'components/main/user/login-link';
 
 export default class Navbar extends React.Component {
   render() {
@@ -44,12 +45,10 @@ export default class Navbar extends React.Component {
                 <input type="text" className="form-control" placeholder="поиск..." />
               </div>
             </form>
+            <LoginLink />
             <ul className="nav navbar-nav navbar-right">
               <li>
                 <CartLink />
-              </li>
-              <li>
-                <Link to="login">Войти</Link>
               </li>
             </ul>
           </div>
