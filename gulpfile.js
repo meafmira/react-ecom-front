@@ -97,7 +97,7 @@ gulp.task('bundle', ['scripts'], function () {
     .pipe(assets.restore())
     .pipe($.useref())
     .pipe(jsFilter)
-    .pipe($.uglify())
+    .pipe($.uglify({mangle: false}))
     .pipe(jsFilter.restore())
     .pipe(cssFilter)
     .pipe($.autoprefixer({
