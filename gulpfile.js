@@ -48,9 +48,9 @@ gulp.task('scripts', function(end) {
     packageCache: {},
     fullPaths: true,
     paths: [
-      './node_modules',
-      './bower_components',
-      './app/scripts'
+      __dirname + '/node_modules',
+      __dirname + '/bower_components',
+      __dirname + '/app/scripts'
     ]
   }).transform('babelify');
   bundle = function(ids) {
