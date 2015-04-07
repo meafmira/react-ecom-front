@@ -4,7 +4,8 @@ import { Link } from 'react-router'
 class ProductThumb extends React.Component {
   render () {
     let product = this.props.product
-      , img = false;
+      , img = false
+      , productPrice;
 
     if (product.thumb) {
       img = (
@@ -12,6 +13,18 @@ class ProductThumb extends React.Component {
           <img src={ product.thumb.path } />
         </Link>
       );
+    }
+
+    if (product.discount > 0) {
+      productPrice = (
+        <div>
+          <p>Цена: <span className="text-danger">{ product.price * (1 - product.discount/100) }</span> $</p>
+          <p>Скидка: <span className="text-danger">{ product.discount }</span> %</p>
+        </div>
+      )
+    }
+    else {
+      productPrice = <p>Цена: <span className="text-primary">{ product.price }</span> $</p>
     }
 
     return (
@@ -22,6 +35,7 @@ class ProductThumb extends React.Component {
             <Link to="product" params={{ productId: product.id }}>{ product.title }</Link>
           </h4>
           <p>{ product.shortDescription }</p>
+          { productPrice }
         </div>
       </div>
     )

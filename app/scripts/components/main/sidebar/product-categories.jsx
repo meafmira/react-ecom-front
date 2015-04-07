@@ -27,7 +27,7 @@ export default class ProductCategories extends React.Component {
 
     let categoryList = categories.map(category => {
       return (
-        <li>
+        <li key={ category.id }>
           <Link to="product-category" params={{ categoryId: category.id }}>{category.title}</Link>
         </li>
       )

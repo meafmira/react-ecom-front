@@ -27,10 +27,9 @@ export default class Product extends React.Component {
     let productElement;
 
     if (product) {
-      console.log("Product: ", product);
       let paramsTable = product.params.map(param => {
         return (
-          <tr>
+          <tr key={param.id}>
             <th>{ param.param.name }</th>
             <td>{ param.value }</td>
           </tr>
