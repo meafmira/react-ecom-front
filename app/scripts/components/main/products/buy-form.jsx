@@ -1,4 +1,5 @@
 import React from 'react';
+import CartActions from 'actions/cart';
 
 export default class BuyForm extends React.Component {
   constructor() {
@@ -22,6 +23,8 @@ export default class BuyForm extends React.Component {
   }
 
   handleSubmit(e) {
+    let count = React.findDOMNode(this.refs.countInput).value;
+    CartActions.add(this.props.product, parseInt(count));
     e.preventDefault();
   }
 
@@ -35,7 +38,7 @@ export default class BuyForm extends React.Component {
         </div>
         <div className="form-group">
           <label>Количество</label>
-          <input type="number" className="form-control" max="100" min="1" defaultValue="1" onChange={ this.handleCountChange } />
+          <input type="number" ref="countInput" className="form-control" max="100" min="1" defaultValue="1" onChange={ this.handleCountChange } />
         </div>
         <button className="btn btn-primary">Купить</button>
       </form>

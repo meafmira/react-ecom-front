@@ -1,5 +1,7 @@
-import React from 'react'
-import { Link } from 'react-router'
+import React from 'react';
+import { Link } from 'react-router';
+import CartStore from 'stores/cart';
+import CartLink from 'components/main/cart/cart-link';
 
 export default class Navbar extends React.Component {
   render() {
@@ -42,6 +44,11 @@ export default class Navbar extends React.Component {
                 <input type="text" className="form-control" placeholder="поиск..." />
               </div>
             </form>
+            <ul className="nav navbar-nav navbar-right">
+              <li>
+                <CartLink />
+              </li>
+            </ul>
           </div>
         </div>
       </nav>
