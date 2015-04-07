@@ -39,3 +39,7 @@ body {
 .post-thumb {
   width: 100px;
 }
+
+.product-thumb-image {
+  height: 200px !important;
+}

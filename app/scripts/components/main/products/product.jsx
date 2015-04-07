@@ -40,7 +40,7 @@ export default class Product extends React.Component {
           <h1 className="page-header">{ product.title }</h1>
           <div className="row">
             <div className="col-md-4">
-              <img src={ product.images[0].path } />
+              <img src={ product.images[0].path } className="img-responsive" />
             </div>
             <div className="col-md-8">
             </div>
