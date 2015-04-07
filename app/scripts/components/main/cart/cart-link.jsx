@@ -25,7 +25,7 @@ export default class CartLink extends React.Component {
 
   render() {
     return (
-      <a href="">Корзина ({this.state.count})</a>
+      <Link to="cart">Корзина ({this.state.count})</Link>
     )
   }
 }
