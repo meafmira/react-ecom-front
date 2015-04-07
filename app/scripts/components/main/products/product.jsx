@@ -1,8 +1,8 @@
-import React from 'react'
-import { TabbedArea, TabPane } from 'react-bootstrap'
-import ProductThumb from 'components/main/products/product-thumb'
-import ProductActions from 'actions/product'
-import ProductStore from 'stores/product'
+import React from 'react';
+import { TabbedArea, TabPane } from 'react-bootstrap';
+import RandomCategoryProducts from 'components/main/products/random-category-products';
+import ProductActions from 'actions/product';
+import ProductStore from 'stores/product';
 
 export default class Product extends React.Component {
   constructor() {
@@ -62,17 +62,7 @@ export default class Product extends React.Component {
           <div className="panel panel-default">
             <div className="panel-heading">Похожие товары</div>
             <div className="panel-body">
-              <div className="row">
-                <div className="col-md-4">
-                  <ProductThumb product={ product } />
-                </div>
-                <div className="col-md-4">
-                  <ProductThumb product={ product } />
-                </div>
-                <div className="col-md-4">
-                  <ProductThumb product={ product } />
-                </div>
-              </div>
+              <RandomCategoryProducts categoryId={ product.category.id } excludeProductId={ product.id } />
             </div>
           </div>
         </div>

@@ -30,13 +30,19 @@ class PostsCategory extends React.Component {
   render() {
     let category = this.state.category;
     let postsList = category.posts.map(post => {
-      return (
-        <div className="media" key={ post.id }>
+      let postImage = null;
+      if (post.thumb) {
+        postImage = (
           <div className="media-left">
             <Link to="post" params={{ postId: post.id }}>
-              <img className="media-object" src={ post.img } alt="..." />
+              <img className="media-object post-thumb" src={ post.thumb.path } alt="..." />
             </Link>
           </div>
+        )
+      }
+      return (
+        <div className="media" key={ post.id }>
+          {postImage}
           <div className="media-body">
             <h4 className="media-heading"><Link to="post" params={{ postId: post.id }}>{ post.title }</Link></h4>
             <p>{ post.shortText }</p>

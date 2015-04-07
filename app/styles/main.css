@@ -35,3 +35,7 @@ body {
 .tab-content {
   padding-top: 10px;
 }
+
+.post-thumb {
+  width: 100px;
+}

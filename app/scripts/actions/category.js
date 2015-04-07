@@ -3,7 +3,8 @@ import Api from 'lib/api';
 import Cache from 'lib/cache';
 
 let CategoryActions = Reflux.createActions({
-  load: { asyncResult: true }
+  load: { asyncResult: true },
+  loadRandomProducts: { asyncResult: true }
 });
 
 CategoryActions.load.listen(function (categoryId) {
@@ -19,6 +20,12 @@ CategoryActions.load.listen(function (categoryId) {
   else {
     this.completed(category);
   }
+});
+
+CategoryActions.loadRandomProducts.listen(function (categoryId) {
+  Api.get(`categories/${categoryId}/products?random=1`)
+    .then(this.completed)
+    .catch(this.failed);
 })
 
 export default CategoryActions;

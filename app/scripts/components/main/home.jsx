@@ -31,13 +31,13 @@ class Home extends React.Component {
       let categoryProducts = category.limited_products;
       let categoryProductMap = categoryProducts.map(product => {
         return (
-          <div className="col-md-4">
+          <div className="col-md-4" key={product.id}>
             <ProductThumb product={ product } />
           </div>
         )
       })
       return (
-        <div className="panel panel-default">
+        <div className="panel panel-default" key={category.id}>
           <div className="panel-heading">
             <Link to="product-category" params={{ categoryId: category.id }}>{ category.title }</Link>
           </div>
