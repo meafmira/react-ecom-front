@@ -5,7 +5,7 @@ let Api = {
   },
 
   path(path) {
-    return `http://ecom/api/v1/${path}`;
+    return `http://ecom-back.herokuapp.com/api/v1/${path}`;
   },
 
   post(path, data) {

@@ -1,5 +1,6 @@
 import React from 'react';
 import CurrentUserStore from 'stores/current-user';
+import UserActions from 'actions/user';
 import { Link } from 'react-router';
 
 export default class LoginLink extends React.Component {
@@ -18,13 +19,18 @@ export default class LoginLink extends React.Component {
     this.unsubscribe = CurrentUserStore.listen(this.onUserLoad);
   }
 
+  handleLogout(e) {
+    UserActions.logout();
+    e.preventDefault();
+  }
+
   render() {
     let user = this.state.user;
     if (user) {
       return (
         <ul className="nav navbar-nav navbar-right">
           <li><Link to="login">{ user.email }</Link></li>
-          <li><a href="#">Выход</a></li>
+          <li><a href="#" onClick={ this.handleLogout }>Выход</a></li>
         </ul>
       )
     }

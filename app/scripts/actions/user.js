@@ -3,7 +3,8 @@ import Api from 'lib/api';
 
 let UserActions = Reflux.createActions({
   login: { asyncResult: true },
-  loadCurrentUser: { asyncResult: true }
+  loadCurrentUser: { asyncResult: true },
+  logout: {}
 });
 
 UserActions.login.listen(function (credentials) {
@@ -16,6 +17,6 @@ UserActions.loadCurrentUser.listen(function () {
   Api.get('current-user')
     .then(this.completed)
     .catch(this.failed);
-})
+});
 
 export default UserActions;
