@@ -15,6 +15,8 @@ var env = 'dev';
 
 var handleError;
 
+global.isWatching = false;
+
 handleError = function(err) {
   console.error(err.toString());
   return this.emit('end');
@@ -153,6 +155,6 @@ gulp.task('watch', ['setWatch'], function () {
   gulp.watch('.tmp/scripts/**/*.js', reload);
 });
 
-gulp.task('serve', ['clean:dev', 'scripts', 'watch', 'browser-sync']);
+gulp.task('serve', ['clean:dev', 'watch', 'scripts', 'browser-sync']);
 
 gulp.task('build', ['clean:dev', 'clean:dist', 'scripts', 'imagemin', 'copy', 'bundle']);

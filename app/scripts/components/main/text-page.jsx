@@ -1,4 +1,5 @@
 import React from 'react';
+import LoadingText from 'components/common/loading-text';
 
 export default class TextPage extends React.Component {
   render() {

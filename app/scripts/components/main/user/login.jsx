@@ -45,41 +45,20 @@ export default class Login extends React.Component {
       )
     }
     return (
-      <div className="row">
-        <div className="col-md-6">
-          <h1 className="page-header">Вход</h1>
-          <form onSubmit={ this.handleSubmit }>
-            <div className="form-group">
-              <label>E-mail</label>
-              <input type="email" ref="emailInput" className="form-control" required />
-            </div>
-            <div className="form-group">
-              <label>Пароль:</label>
-              <input type="password" ref="passwordInput" className="form-control" required />
-            </div>
-            { errorElement }
-            <input type="submit" value="Войти" className="btn btn-primary" />
-          </form>
-        </div>
-        <div className="col-md-6">
-          <h1 className="page-header">Регистрация</h1>
-          <form onSubmit={ this.handleSubmit }>
-            <div className="form-group">
-              <label>E-mail</label>
-              <input type="email" ref="regEmailInput" className="form-control" required />
-            </div>
-            <div className="form-group">
-              <label>Пароль:</label>
-              <input type="password" ref="regPasswordInput" className="form-control" required />
-            </div>
-            <div className="form-group">
-              <label>Подтверждение:</label>
-              <input type="password" ref="regPasswordConfirmInput" className="form-control" required />
-            </div>
-            { errorElement }
-            <input type="submit" value="Войти" className="btn btn-primary" />
-          </form>
-        </div>
+      <div>
+        <h1 className="page-header">Вход</h1>
+        <form onSubmit={ this.handleSubmit }>
+          <div className="form-group">
+            <label>E-mail</label>
+            <input type="email" ref="emailInput" className="form-control" required />
+          </div>
+          <div className="form-group">
+            <label>Пароль:</label>
+            <input type="password" ref="passwordInput" className="form-control" required />
+          </div>
+          { errorElement }
+          <input type="submit" value="Войти" className="btn btn-primary" />
+        </form>
       </div>
     )
   }
