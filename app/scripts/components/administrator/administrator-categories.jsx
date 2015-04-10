@@ -1,6 +1,7 @@
 import React from 'react';
 import CategoriesActions from 'actions/categories';
 import CategoriesStore from 'stores/categories';
+import { Link } from 'react-router';
 
 export default class AdministratorCategories extends React.Component {
   constructor() {
@@ -27,8 +28,10 @@ export default class AdministratorCategories extends React.Component {
     let categories = this.state.categories;
     let categoryList = categories.map(category => {
       return (
-        <tr>
-          <td>{ category.title }</td>
+        <tr key={ category.id }>
+          <td>
+            <Link to="administrator-category" params={{ categoryId: category.id }}>{ category.title }</Link>
+          </td>
           <td>
             <div className="btn-group">
               <a href="#" className="btn btn-small btn-default">Товары</a>
