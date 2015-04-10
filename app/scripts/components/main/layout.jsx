@@ -1,7 +1,7 @@
-import React from 'react'
-import Router from 'react-router'
-import Navbar from 'components/main/navbar'
-import Sidebar from 'components/main/sidebar/sidebar'
+import React from 'react';
+import Router from 'react-router';
+import Navbar from 'components/main/navbar';
+import Sidebar from 'components/main/sidebar/sidebar';
 var RouteHandler = Router.RouteHandler;
 
 var Layout = React.createClass({

@@ -1,5 +1,5 @@
-import Reflux from 'reflux'
-import CategoryActions from 'actions/category'
+import Reflux from 'reflux';
+import CategoryActions from 'actions/category';
 
 let categoriesHash = {};
 

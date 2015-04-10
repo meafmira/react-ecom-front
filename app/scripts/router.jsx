@@ -3,6 +3,7 @@ import Router from 'react-router';
 var Route = Router.Route;
 var DefaultRoute = Router.DefaultRoute;
 
+import AdministratorRoutes from 'components/administrator/routes';
 import Layout from 'components/main/layout';
 import Home from 'components/main/home';
 import Page from 'components/main/page';
@@ -22,15 +23,18 @@ if (localStorage.token) {
 UserActions.loadCurrentUser();
 
 var routes = (
-	<Route name="main" path="/" handler={Layout}>
-		<DefaultRoute handler={Home} />
-    <Route name="page" path="page/:pageId" handler={Page} />
-    <Route name="product" path="products/:productId" handler={Product} />
-    <Route name="post-category" path="post-categories/:categoryId" handler={PostsCategory} />
-		<Route name="post" path="posts/:postId" handler={Post} />
-    <Route name="product-category" path="categories/:categoryId" handler={ProductCategory} />
-		<Route name="cart" handler={Cart} />
-		<Route name="login" handler={LoginHandler} />
+	<Route name="app">
+		<Route name="main" path="/" handler={Layout}>
+			<DefaultRoute handler={Home} />
+	    <Route name="page" path="page/:pageId" handler={Page} />
+	    <Route name="product" path="products/:productId" handler={Product} />
+	    <Route name="post-category" path="post-categories/:categoryId" handler={PostsCategory} />
+			<Route name="post" path="posts/:postId" handler={Post} />
+	    <Route name="product-category" path="categories/:categoryId" handler={ProductCategory} />
+			<Route name="cart" handler={Cart} />
+			<Route name="login" handler={LoginHandler} />
+		</Route>
+		{ AdministratorRoutes }
 	</Route>
 );
 
