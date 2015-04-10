@@ -5,6 +5,7 @@ import Cache from 'lib/cache';
 let CategoryActions = Reflux.createActions({
   load: { asyncResult: true },
   loadRandomProducts: { asyncResult: true },
+  loadProducts: { asyncResult: true },
 
   update: { asyncResult: true }
 });
@@ -24,6 +25,12 @@ CategoryActions.load.listen(function (categoryId) {
   }
 });
 
+CategoryActions.loadProducts.listen(function (categoryId) {
+  Api.get(`categories/${categoryId}/products`)
+    .then(this.completed)
+    .catch(this.failed);
+})
+
 CategoryActions.loadRandomProducts.listen(function (categoryId) {
   Api.get(`categories/${categoryId}/products?random=1`)
     .then(this.completed)
@@ -35,6 +42,6 @@ CategoryActions.update.listen(function (category) {
   Api.patch(`categories/${category.id}`, category)
     .then(this.completed)
     .catch(this.failed);
-})
+});
 
 export default CategoryActions;

@@ -34,7 +34,7 @@ export default class AdministratorCategories extends React.Component {
           </td>
           <td>
             <div className="btn-group">
-              <a href="#" className="btn btn-small btn-default">Товары</a>
+              <Link to="administrator-category-products" params={{ categoryId: category.id }} className="btn btn-small btn-default">Товары</Link>
               <a href="#" className="btn btn-small btn-danger">Удалить</a>
             </div>
           </td>
