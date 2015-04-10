@@ -66,7 +66,9 @@ export default class Product extends React.Component {
                 </TabPane>
                 <TabPane eventKey={2} tab='Характеристики'>
                   <table className="table table-striped params-table">
-                  { paramsTable }
+                    <tbody>
+                    { paramsTable }
+                    </tbody>
                   </table>
                 </TabPane>
                 <TabPane eventKey={3} tab="Купить">

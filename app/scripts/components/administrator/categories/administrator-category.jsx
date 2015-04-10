@@ -17,6 +17,7 @@ export default class AdministratorCategory extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleTitleChange = this.handleTitleChange.bind(this);
     this.onParamChange = this.onParamChange.bind(this);
+    this.removeParam = this.removeParam.bind(this);
   }
 
   static willTransitionTo(_, params) {
@@ -32,6 +33,11 @@ export default class AdministratorCategory extends React.Component {
   }
 
   onCategoryLoad(category) {
+    let category = category;
+    category.params = category.params.map((param, order) => {
+      param.order = order;
+      return param;
+    })
     this.setState({category});
   }
 
@@ -44,10 +50,10 @@ export default class AdministratorCategory extends React.Component {
   }
 
   onParamChange(e) {
-    let paramId = e.target.dataset.id
+    let paramOrder = e.target.dataset.id
       , category = this.state.category;
     category.params.forEach(param => {
-      if (param.id == paramId) {
+      if (param.order == paramOrder) {
         param.name = e.target.value;
       }
     });
@@ -55,11 +61,10 @@ export default class AdministratorCategory extends React.Component {
   }
 
   addParam() {
-    let id = _.max(this.state.category.params, param => { return param.id }).id + 1 || 1;
-    console.log("new id: ", id);
+    let order = _.max(this.state.category.params, param => { return param.order }).order + 1 || 1;
     let category = addons.update(this.state.category, {
       params: {
-        $push: [ { id, name: '' } ]
+        $push: [ { order, name: '', type: 'new' } ]
       }
     });
     this.setState({ category });
@@ -71,13 +76,26 @@ export default class AdministratorCategory extends React.Component {
     this.setState({category});
   }
 
+  removeParam(e) {
+    let category = this.state.category;
+    let paramOrder = e.target.dataset.paramOrder;
+    category.params = category.params.filter(param => { return param.order != paramOrder });
+    this.setState({category});
+  }
+
   render() {
     let category = this.state.category;
     let categoryParamsList = category.params.map(param => {
       return (
-        <div className="form-group" key={ param.id }>
-          <label>Название параметра</label>
-          <input className="form-control" value={ param.name } ref={ "param" + param.id } onChange={ this.onParamChange } data-id={ param.id } />
+        <div className="form-group" key={ param.order }>
+          <div className="row">
+            <div className="col-md-9">
+              <input className="form-control" value={ param.name } ref={ "param" + param.order } onChange={ this.onParamChange } data-id={ param.order } />
+            </div>
+            <div className="col-md-3">
+              <button type="button" className="btn btn-danger" onClick={ this.removeParam } data-param-order={ param.order }>Удалить</button>
+            </div>
+          </div>
         </div>
       )
     })
