@@ -1,49 +1,24 @@
 import React from 'react';
-import CategoryStore from 'stores/category';
-import CategoryActions from 'actions/category';
+import AdminCategoryParams from 'components/administrator/categories/admin-category-params';
 import { Link } from 'react-router';
 
-import AdminCategoryParams from 'components/administrator/categories/admin-category-params';
-
-export default class AdministratorCategory extends React.Component {
+export default class AdminCategory extends React.Component {
   constructor() {
-    this.onCategoryLoad = this.onCategoryLoad.bind(this);
     this.state = {
-      category: {
-        params: []
-      }
+      category: {}
     }
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleTitleChange = this.handleTitleChange.bind(this);
     this.handleParamsChange = this.handleParamsChange.bind(this);
   }
 
-  static willTransitionTo(_, params) {
-    CategoryActions.load(params.categoryId);
-  }
-
-  componentDidMount() {
-    this.unsubscribe = CategoryStore.listen(this.onCategoryLoad);
-  }
-
-  componentWillUnmount() {
-    this.unsubscribe();
-  }
-
-  onCategoryLoad(category) {
-    let category = category;
-    category.params = category.params.map((param, order) => {
-      param.order = order;
-      return param;
-    })
+  componentWillReceiveProps(props) {
+    let category = props.category;
     this.setState({category});
   }
 
   handleSubmit(e) {
-    CategoryActions.update(this.state.category)
-      .then((category) => {
-        this.context.router.transitionTo('administrator-categories');
-      });
+    this.props.onSave(this.state.category);
     e.preventDefault();
   }
 
@@ -80,7 +55,3 @@ export default class AdministratorCategory extends React.Component {
     )
   }
 }
-
-AdministratorCategory.contextTypes = {
-  router: React.PropTypes.func
-};

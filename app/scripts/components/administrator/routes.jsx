@@ -2,7 +2,7 @@ import React from 'react';
 import { Route } from 'react-router';
 import Administrator from 'components/administrator/administrator';
 import AdministratorCategories from 'components/administrator/administrator-categories';
-import AdministratorCategory from 'components/administrator/categories/administrator-category';
+import AdminCategoryEdit from 'components/administrator/categories/admin-category-edit';
 import AdminCategoryProducts from 'components/administrator/categories/admin-category-products';
 
 let AdministratorRoutes = (
@@ -12,7 +12,7 @@ let AdministratorRoutes = (
       handler={ AdministratorCategories } />
     <Route path="/administrator/categories/:categoryId"
       name="administrator-category"
-      handler={ AdministratorCategory } />
+      handler={ AdminCategoryEdit } />
     <Route path="/administrator/categories/:categoryId/products"
       name="administrator-category-products"
       handler={ AdminCategoryProducts } />
