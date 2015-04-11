@@ -10,37 +10,41 @@ import AdminPages from 'components/administrator/pages/admin-pages';
 import AdminPage from 'components/administrator/pages/admin-page';
 import AdminPostsCategory from 'components/administrator/posts/admin-posts-category';
 import AdminPostEdit from 'components/administrator/posts/admin-post-edit';
+import AdminProductAdd from 'components/administrator/products/admin-product-add'
 
 let AdministratorRoutes = (
   <Route path="/administrator" name="administrator" handler={ Administrator }>
-    <Route path="/administrator/categories"
+    <Route path="categories"
       name="administrator-categories"
       handler={ AdministratorCategories } />
-    <Route path="/administrator/categories/create"
+    <Route path="categories/create"
       name="administrator-category-create"
       handler={ AdminCategoryCreate } />
-    <Route path="/administrator/categories/:categoryId"
+    <Route path="categories/:categoryId"
       name="administrator-category"
       handler={ AdminCategoryEdit } />
-    <Route path="/administrator/categories/:categoryId/products"
+    <Route path="categories/:categoryId/products"
       name="administrator-category-products"
       handler={ AdminCategoryProducts } />
-    <Route path="/administrator/products/:productId"
+    <Route path="products/:productId"
       name="administrator-product-edit"
       handler={ AdminProductEdit } />
-    <Route path="/administrator/pages"
+    <Route path="pages"
       name="administrator-pages"
       handler={ AdminPages } />
-    <Route path="/administrator/pages/:pageId"
+    <Route path="pages/:pageId"
       name="administrator-page"
       handler={ AdminPage } />
-    <Route path="administrator/posts-category/:categoryId"
+    <Route path="posts-category/:categoryId"
       name="administrator-posts-category"
       handler={ AdminPostsCategory }>
     </Route>
-    <Route path="administrator/posts/:postId"
+    <Route path="posts/:postId"
       name="administrator-post"
       handler={ AdminPostEdit } />
+    <Route path="categories/:categoryId/products/create"
+      name="administrator-product-create"
+      handler={ AdminProductAdd } />
   </Route>
 )
 

@@ -53,7 +53,14 @@ export default class AdminCategoryProducts extends React.Component {
             { productList }
           </tbody>
         </table>
+        <div className="btn-group">
+          <Link className="btn btn-primary" to="administrator-product-create" params={ {categoryId: this.context.router.getCurrentParams().categoryId} }>Добавить</Link>
+        </div>
       </div>
     )
   }
 }
+
+AdminCategoryProducts.contextTypes = {
+  router: React.PropTypes.func
+};
