@@ -7,7 +7,9 @@ import CategoryStore from 'stores/category';
 export default class AdminProductEdit extends React.Component {
   constructor() {
     this.state = {
-      product: {},
+      product: {
+        images: []
+      },
       category: {
         params: []
       }
@@ -17,6 +19,7 @@ export default class AdminProductEdit extends React.Component {
     this.handleChangeParam = this.handleChangeParam.bind(this);
     this.handleProductChange = this.handleProductChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.removeImage = this.removeImage.bind(this);
   }
 
   static willTransitionTo(_, params) {
@@ -83,6 +86,13 @@ export default class AdminProductEdit extends React.Component {
     e.preventDefault();
   }
 
+  removeImage(e) {
+    let imageId = e.target.dataset.id
+      , product = this.state.product;
+    product.images = product.images.filter(image => { return image.id != imageId });
+    this.setState({product});
+  }
+
   render() {
     let product = this.state.product;
     let category = this.state.category;
@@ -104,6 +114,19 @@ export default class AdminProductEdit extends React.Component {
           <label>{ param.name }</label>
           { paramInput }
         </div>
+      )
+    });
+
+    let imagesList = product.images.map(image => {
+      return (
+        <tr key={ image.id }>
+          <td width="100">
+            <img src={ image.path } className="img-responsive" />
+          </td>
+          <td>
+            <button type="button" onClick={ this.removeImage } className="btn btn-danger" data-id={ image.id }>Удалить</button>
+          </td>
+        </tr>
       )
     })
 
@@ -128,6 +151,11 @@ export default class AdminProductEdit extends React.Component {
             <input className="form-control" value={ product.discount } onChange={ this.handleProductChange } data-param="discount" />
           </div>
           { paramList }
+          <table className="table table-striped">
+            <tbody>
+            { imagesList }
+            </tbody>
+          </table>
           <div className="btn-group">
             <button type="submit" className="btn btn-primary">Сохранить</button>
             <a className="btn btn-default" href="#">Отмена</a>
