@@ -1,6 +1,7 @@
 import React from 'react';
 import PostCategoryActions from 'actions/post-category';
 import PostCategoryStore from 'stores/post-category';
+import { Link } from 'react-router';
 
 export default class AdminPostsCategory extends React.Component {
   constructor() {
@@ -34,7 +35,9 @@ export default class AdminPostsCategory extends React.Component {
     let postsList = posts.map(post => {
       return (
         <tr key={ post.id }>
-          <td>{ post.title }</td>
+          <td>
+            <Link to="administrator-post" params={{ postId: post.id }}>{ post.title }</Link>
+          </td>
           <td>
             <button type="button" className="btn btn-danger">Удалить</button>
           </td>

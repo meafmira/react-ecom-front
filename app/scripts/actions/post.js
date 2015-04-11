@@ -2,7 +2,8 @@ import Reflux from 'reflux';
 import Api from 'lib/api';
 
 let PostActions = Reflux.createActions({
-  loadOne: { asyncResult: true }
+  loadOne: { asyncResult: true },
+  save: { asyncResult: true }
 });
 
 PostActions.loadOne.listen(function (postId) {
@@ -10,5 +11,11 @@ PostActions.loadOne.listen(function (postId) {
     .then(this.completed)
     .catch(this.failed);
 });
+
+PostActions.save.listen(function (post) {
+  Api.patch(`posts/${post.id}`, post)
+    .then(this.completed)
+    .catch(this.failed);
+})
 
 export default PostActions;

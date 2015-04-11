@@ -8,7 +8,8 @@ import AdminCategoryCreate from 'components/administrator/categories/admin-categ
 import AdminProductEdit from 'components/administrator/products/admin-product-edit';
 import AdminPages from 'components/administrator/pages/admin-pages';
 import AdminPage from 'components/administrator/pages/admin-page';
-import AdminPostsCategory from 'components/administrator/posts/admin-posts-category'
+import AdminPostsCategory from 'components/administrator/posts/admin-posts-category';
+import AdminPostEdit from 'components/administrator/posts/admin-post-edit';
 
 let AdministratorRoutes = (
   <Route path="/administrator" name="administrator" handler={ Administrator }>
@@ -37,6 +38,9 @@ let AdministratorRoutes = (
       name="administrator-posts-category"
       handler={ AdminPostsCategory }>
     </Route>
+    <Route path="administrator/posts/:postId"
+      name="administrator-post"
+      handler={ AdminPostEdit } />
   </Route>
 )
 
