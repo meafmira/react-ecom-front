@@ -1,6 +1,7 @@
 import React from 'react';
 import CategoryActions from 'actions/category';
 import CategoryProductsStore from 'stores/category-products';
+import { Link } from 'react-router';
 
 export default class AdminCategoryProducts extends React.Component {
   constructor() {
@@ -31,7 +32,9 @@ export default class AdminCategoryProducts extends React.Component {
     let productList = products.map(product => {
       return (
         <tr key={ product.id }>
-          <td>{ product.title }</td>
+          <td>
+            <Link to="administrator-product-edit" params={{ productId: product.id }}>{ product.title }</Link>
+          </td>
           <td>{ product.price }</td>
           <td>{ product.discount }</td>
         </tr>
