@@ -6,6 +6,9 @@ import AdminCategoryEdit from 'components/administrator/categories/admin-categor
 import AdminCategoryProducts from 'components/administrator/categories/admin-category-products';
 import AdminCategoryCreate from 'components/administrator/categories/admin-category-create';
 import AdminProductEdit from 'components/administrator/products/admin-product-edit';
+import AdminPages from 'components/administrator/pages/admin-pages';
+import AdminPage from 'components/administrator/pages/admin-page';
+import AdminPostsCategory from 'components/administrator/posts/admin-posts-category'
 
 let AdministratorRoutes = (
   <Route path="/administrator" name="administrator" handler={ Administrator }>
@@ -24,6 +27,16 @@ let AdministratorRoutes = (
     <Route path="/administrator/products/:productId"
       name="administrator-product-edit"
       handler={ AdminProductEdit } />
+    <Route path="/administrator/pages"
+      name="administrator-pages"
+      handler={ AdminPages } />
+    <Route path="/administrator/pages/:pageId"
+      name="administrator-page"
+      handler={ AdminPage } />
+    <Route path="administrator/posts-category/:categoryId"
+      name="administrator-posts-category"
+      handler={ AdminPostsCategory }>
+    </Route>
   </Route>
 )
 

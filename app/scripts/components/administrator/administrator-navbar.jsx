@@ -25,10 +25,10 @@ export default class Navbar extends React.Component {
                 <Link to="administrator-categories">Категории</Link>
               </li>
               <li>
-                <a href="#">Страницы</a>
+                <Link to="administrator-pages">Страницы</Link>
               </li>
               <li>
-                <a href="#">Категории постов</a>
+                <Link to="administrator-posts-category" params={{ categoryId: 1 }}>Новости</Link>
               </li>
             </ul>
             <ul className="nav navbar-nav navbar-right">
