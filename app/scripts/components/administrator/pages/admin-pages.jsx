@@ -38,7 +38,7 @@ export default class AdminPages extends React.Component {
     return (
       <div>
         <h1 className="page-header">Страницы</h1>
-        <table>
+        <table className="table table-striped">
           <tbody>
           { pagesList }
           </tbody>
