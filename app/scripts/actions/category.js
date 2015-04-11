@@ -7,7 +7,8 @@ let CategoryActions = Reflux.createActions({
   loadRandomProducts: { asyncResult: true },
   loadProducts: { asyncResult: true },
 
-  update: { asyncResult: true }
+  update: { asyncResult: true },
+  remove: { asyncResult: true }
 });
 
 CategoryActions.load.listen(function (categoryId) {
@@ -43,5 +44,11 @@ CategoryActions.update.listen(function (category) {
     .then(this.completed)
     .catch(this.failed);
 });
+
+CategoryActions.remove.listen(function (categoryId) {
+  Api.delete(`categories/${categoryId}`)
+    .then(this.completed)
+    .catch(this.failed);
+})
 
 export default CategoryActions;

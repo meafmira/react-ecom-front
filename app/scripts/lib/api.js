@@ -52,6 +52,15 @@ let Api = {
     return Api.handleResponse(fetchPromise);
   },
 
+  delete(path) {
+    let fetchPromise = fetch(this.path(path), {
+      method: 'delete',
+      headers: Api.headers
+    });
+
+    return Api.handleResponse(fetchPromise);
+  },
+
   get(path) {
     let fetchPromise = fetch(this.path(path), {
       headers: Api.headers
