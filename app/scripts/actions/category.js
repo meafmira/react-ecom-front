@@ -8,7 +8,8 @@ let CategoryActions = Reflux.createActions({
   loadProducts: { asyncResult: true },
 
   update: { asyncResult: true },
-  remove: { asyncResult: true }
+  remove: { asyncResult: true },
+  create: { asyncResult: true }
 });
 
 CategoryActions.load.listen(function (categoryId) {
@@ -39,7 +40,6 @@ CategoryActions.loadRandomProducts.listen(function (categoryId) {
 });
 
 CategoryActions.update.listen(function (category) {
-  //Cache.setItem(`category:${category.id}`, category);
   Api.patch(`categories/${category.id}`, category)
     .then(this.completed)
     .catch(this.failed);
@@ -47,6 +47,12 @@ CategoryActions.update.listen(function (category) {
 
 CategoryActions.remove.listen(function (categoryId) {
   Api.delete(`categories/${categoryId}`)
+    .then(this.completed)
+    .catch(this.failed);
+});
+
+CategoryActions.create.listen(function (category) {
+  Api.post(`categories`, category)
     .then(this.completed)
     .catch(this.failed);
 })

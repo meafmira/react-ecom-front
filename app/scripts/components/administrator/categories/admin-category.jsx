@@ -12,6 +12,11 @@ export default class AdminCategory extends React.Component {
     this.handleParamsChange = this.handleParamsChange.bind(this);
   }
 
+  componentDidMount() {
+    let category = this.props.category;
+    this.setState({category});
+  }
+
   componentWillReceiveProps(props) {
     let category = props.category;
     this.setState({category});

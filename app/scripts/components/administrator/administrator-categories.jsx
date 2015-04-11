@@ -64,6 +64,7 @@ export default class AdministratorCategories extends React.Component {
             { categoryList }
           </tbody>
         </table>
+        <Link to="administrator-category-create" className="btn btn-primary">Добавить</Link>
       </div>
     )
   }
