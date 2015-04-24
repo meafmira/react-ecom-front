@@ -36,7 +36,6 @@ export default class AdminPostForm extends React.Component {
   }
 
   handleSubmit(e) {
-    console.log(e);
     e.preventDefault();
     this.props.onChange(this.state.post);
   }

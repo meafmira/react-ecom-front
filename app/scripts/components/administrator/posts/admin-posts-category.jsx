@@ -2,6 +2,8 @@ import React from 'react';
 import PostCategoryActions from 'actions/post-category';
 import PostCategoryStore from 'stores/post-category';
 import { Link } from 'react-router';
+import PostActions from 'actions/post'
+import ConfirmModal from 'components/common/confirm-modal'
 
 export default class AdminPostsCategory extends React.Component {
   constructor() {
@@ -29,6 +31,11 @@ export default class AdminPostsCategory extends React.Component {
     this.setState({category});
   }
 
+  removePost(post) {
+    PostActions.delete(post.id)
+      .then(() => PostCategoryActions.loadOne(post.post_category_id));
+  }
+
   render() {
     let posts = this.state.category.posts;
     let category = this.state.category;
@@ -39,7 +46,9 @@ export default class AdminPostsCategory extends React.Component {
             <Link to="administrator-post" params={{ postId: post.id }}>{ post.title }</Link>
           </td>
           <td>
-            <button type="button" className="btn btn-danger">Удалить</button>
+            <ConfirmModal text="Удалить пост?" onYes={ () => this.removePost(post) }>
+              <button type="button" className="btn btn-small btn-danger">Удалить</button>
+            </ConfirmModal>
           </td>
         </tr>
       )
@@ -61,3 +70,7 @@ export default class AdminPostsCategory extends React.Component {
     )
   }
 }
+
+AdminPostsCategory.contextTypes = {
+  router: React.PropTypes.func
+};

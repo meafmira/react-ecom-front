@@ -3,7 +3,8 @@ import Api from 'lib/api';
 
 let PostActions = Reflux.createActions({
   loadOne: { asyncResult: true },
-  save: { asyncResult: true }
+  save: { asyncResult: true },
+  delete: { asyncResult: true }
 });
 
 PostActions.loadOne.listen(function (postId) {
@@ -14,6 +15,12 @@ PostActions.loadOne.listen(function (postId) {
 
 PostActions.save.listen(function (post) {
   Api.patch(`posts/${post.id}`, post)
+    .then(this.completed)
+    .catch(this.failed);
+});
+
+PostActions.delete.listen(function (postId) {
+  Api.delete(`posts/${postId}`, postId)
     .then(this.completed)
     .catch(this.failed);
 })
