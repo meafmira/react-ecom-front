@@ -7,15 +7,11 @@ let CategoriesActions = Reflux.createActions({
 });
 
 CategoriesActions.loadAll.listen(function () {
-  Api.get('categories')
-    .then(this.completed)
-    .catch(this.failed);
+  this.promise(Api.get('categories'))
 });
 
 CategoriesActions.loadHomeCategories.listen(function () {
-  Api.get('categories/random')
-    .then(this.completed)
-    .catch(this.failed);
+  this.promise(Api.get('categories/random'))
 })
 
 export default CategoriesActions;

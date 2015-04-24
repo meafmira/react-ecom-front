@@ -9,27 +9,19 @@ let PostActions = Reflux.createActions({
 });
 
 PostActions.loadOne.listen(function (postId) {
-  Api.get(`posts/${postId}`)
-    .then(this.completed)
-    .catch(this.failed);
+  this.promise(Api.get(`posts/${postId}`))
 });
 
 PostActions.create.listen(function (post) {
-  Api.post(`posts`, post)
-    .then(this.completed)
-    .catch(this.failed);
+  this.promise(Api.post(`posts`, post))
 })
 
 PostActions.save.listen(function (post) {
-  Api.patch(`posts/${post.id}`, post)
-    .then(this.completed)
-    .catch(this.failed);
+  this.promise(Api.patch(`posts/${post.id}`, post))
 });
 
 PostActions.delete.listen(function (postId) {
-  Api.delete(`posts/${postId}`, postId)
-    .then(this.completed)
-    .catch(this.failed);
+  this.promise(Api.delete(`posts/${postId}`, postId))
 })
 
 export default PostActions;

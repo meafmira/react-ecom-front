@@ -8,21 +8,15 @@ let PageActions = Reflux.createActions({
 });
 
 PageActions.loadOne.listen(function (pageId) {
-  Api.get(`pages/${pageId}`)
-    .then(this.completed)
-    .catch(this.failed);
+  this.promise(Api.get(`pages/${pageId}`))
 });
 
 PageActions.loadAll.listen(function () {
-  Api.get('pages')
-    .then(this.completed)
-    .catch(this.failed);
+  this.promise(Api.get('pages'))
 });
 
 PageActions.save.listen(function (page) {
-  Api.patch(`pages/${page.id}`, page)
-    .then(this.completed)
-    .catch(this.failed);
+  this.promise(Api.patch(`pages/${page.id}`, page))
 })
 
 export default PageActions;

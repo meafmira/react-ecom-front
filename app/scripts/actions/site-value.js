@@ -6,9 +6,7 @@ let SiteValueActions = Reflux.createActions({
 })
 
 SiteValueActions.get.listen(function (valueId) {
-  Api.get(`site-values/${valueId}`)
-    .then(this.completed)
-    .catch(this.failed);
+  this.promise(Api.get(`site-values/${valueId}`))
 })
 
 export default SiteValueActions

@@ -6,9 +6,7 @@ let PostCategoryActions = Reflux.createActions({
 });
 
 PostCategoryActions.loadOne.listen(function (categoryId) {
-  Api.get(`post-categories/${categoryId}`)
-    .then(this.completed)
-    .catch(this.failed);
+  this.promise(Api.get(`post-categories/${categoryId}`))
 });
 
 export default PostCategoryActions

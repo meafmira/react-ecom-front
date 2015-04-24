@@ -28,33 +28,23 @@ CategoryActions.load.listen(function (categoryId) {
 });
 
 CategoryActions.loadProducts.listen(function (categoryId) {
-  Api.get(`categories/${categoryId}/products`)
-    .then(this.completed)
-    .catch(this.failed);
+  this.promise(Api.get(`categories/${categoryId}/products`))
 })
 
 CategoryActions.loadRandomProducts.listen(function (categoryId) {
-  Api.get(`categories/${categoryId}/products?random=1`)
-    .then(this.completed)
-    .catch(this.failed);
+  this.promise(Api.get(`categories/${categoryId}/products?random=1`))
 });
 
 CategoryActions.update.listen(function (category) {
-  Api.patch(`categories/${category.id}`, category)
-    .then(this.completed)
-    .catch(this.failed);
+  this.promise(Api.patch(`categories/${category.id}`, category))
 });
 
 CategoryActions.remove.listen(function (categoryId) {
-  Api.delete(`categories/${categoryId}`)
-    .then(this.completed)
-    .catch(this.failed);
+  this.promise(Api.delete(`categories/${categoryId}`))
 });
 
 CategoryActions.create.listen(function (category) {
-  Api.post(`categories`, category)
-    .then(this.completed)
-    .catch(this.failed);
+  this.promise(Api.post(`categories`, category))
 })
 
 export default CategoryActions;

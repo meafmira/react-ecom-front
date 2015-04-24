@@ -11,39 +11,27 @@ let ProductActions = Reflux.createActions({
 });
 
 ProductActions.loadOne.listen(function (productId) {
-  Api.get(`products/${productId}`)
-    .then(this.completed)
-    .catch(this.failed);
+  this.promise(Api.get(`products/${productId}`))
 });
 
 ProductActions.loadLatest.listen(function (latestProducts) {
-  Api.get('products/latest')
-    .then(this.completed)
-    .catch(this.failed);
+  this.promise(Api.get('products/latest'))
 });
 
 ProductActions.save.listen(function (product) {
-  Api.patch(`products/${product.id}`, product)
-    .then(this.completed)
-    .catch(this.failed);
+  this.promise(Api.patch(`products/${product.id}`, product))
 });
 
 ProductActions.create.listen(function (product) {
-  Api.post('products', product)
-    .then(this.completed)
-    .catch(this.failed);
+  this.promise(Api.post('products', product))
 });
 
 ProductActions.uploadImages.listen(function (productId, images) {
-  Api.upload(`products/${productId}/images`, images)
-    .then(this.completed)
-    .catch(this.failed);
+  this.promise(Api.upload(`products/${productId}/images`, images))
 });
 
 ProductActions.delete.listen(function (productId) {
-  Api.delete(`products/${productId}`)
-    .then(this.completed)
-    .catch(this.failed);
+  this.promise(Api.delete(`products/${productId}`))
 })
 
 export default ProductActions;

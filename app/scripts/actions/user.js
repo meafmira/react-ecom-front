@@ -9,21 +9,15 @@ let UserActions = Reflux.createActions({
 });
 
 UserActions.login.listen(function (credentials) {
-  Api.post('signin', credentials)
-    .then(this.completed)
-    .catch(this.failed);
+  this.promise(Api.post('signin', credentials))
 });
 
 UserActions.loadCurrentUser.listen(function () {
-  Api.get('current-user')
-    .then(this.completed)
-    .catch(this.failed);
+  this.promise(Api.get('current-user'))
 });
 
 UserActions.register.listen(function (credentials) {
-  Api.post('signup', credentials)
-    .then(this.completed)
-    .catch(this.failed);
+  this.promise(Api.post('signup', credentials))
 })
 
 export default UserActions;

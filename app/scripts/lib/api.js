@@ -29,7 +29,7 @@ let Api = {
   },
 
   path(path) {
-    return `http://ecom:8080/api/v1/${path}`;
+    return `http://ecom/api/v1/${path}`;
   },
 
   patch(path, data) {
