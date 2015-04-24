@@ -1,7 +1,8 @@
 import React from 'react';
 import CategoryStore from 'stores/category';
 import CategoryActions from 'actions/category';
-import AdminProductParams from 'components/administrator/products/admin-product-params'
+import AdminProductParams from 'components/administrator/products/admin-product-params';
+import Dropzone from 'react-dropzone';
 
 export default class AdminProduct extends React.Component {
   constructor() {
@@ -12,13 +13,15 @@ export default class AdminProduct extends React.Component {
       },
       category: {
         params: []
-      }
+      },
+      fileList: []
     }
     this.onLoadCategory = this.onLoadCategory.bind(this);
     this.handleChangeParams = this.handleChangeParams.bind(this);
     this.handleProductChange = this.handleProductChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.removeImage = this.removeImage.bind(this);
+    this.onDrop = this.onDrop.bind(this);
   }
 
   componentDidMount() {
@@ -63,7 +66,7 @@ export default class AdminProduct extends React.Component {
   }
 
   handleSubmit(e) {
-    this.props.onChange(this.state.product);
+    this.props.onChange(this.state.product, this.state.fileList);
     e.preventDefault();
   }
 
@@ -72,6 +75,11 @@ export default class AdminProduct extends React.Component {
       , product = this.state.product;
     product.images = product.images.filter(image => { return image.id != imageId });
     this.setState({product});
+  }
+
+  onDrop(files) {
+    let fileList = this.state.fileList.concat(files);
+    this.setState({ fileList });
   }
 
   render() {
@@ -89,7 +97,15 @@ export default class AdminProduct extends React.Component {
           </td>
         </tr>
       )
-    })
+    });
+
+    let fileList = this.state.fileList.map((file, index) => {
+      return (
+        <tr key={ index }>
+          <td colSpan={ 2 }>{ file.name }</td>
+        </tr>
+      )
+    });
 
     return (
       <div>
@@ -115,8 +131,14 @@ export default class AdminProduct extends React.Component {
           <table className="table table-striped">
             <tbody>
             { imagesList }
+            { fileList }
             </tbody>
           </table>
+          <Dropzone size={ 200 } onDrop={ this.onDrop }>
+            <div>
+              Выберите файлы
+            </div>
+          </Dropzone>
           <div className="btn-group">
             <button type="submit" className="btn btn-primary">Сохранить</button>
             <a className="btn btn-default" href="#">Отмена</a>

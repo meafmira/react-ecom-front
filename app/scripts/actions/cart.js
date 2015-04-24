@@ -1,7 +1,8 @@
 import Reflux from 'reflux';
 
 let CartActions = Reflux.createActions({
-  add: {}
+  add: {},
+  remove: {}
 });
 
 export default CartActions;

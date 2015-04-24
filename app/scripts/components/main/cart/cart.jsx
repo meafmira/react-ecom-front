@@ -1,5 +1,6 @@
 import React from 'react';
 import CartStore from 'stores/cart';
+import CartActions from 'actions/cart';
 import { Link } from 'react-router';
 
 export default class Cart extends React.Component {
@@ -22,6 +23,10 @@ export default class Cart extends React.Component {
     this.unsubscribe();
   }
 
+  removeItem(itemId) {
+    CartActions.remove(itemId);
+  }
+
   render() {
     let cart = this.state.cart;
     let totalPrice = 0;
@@ -35,6 +40,9 @@ export default class Cart extends React.Component {
           </td>
           <td>{ item.count }</td>
           <td>{ item.price * item.count }</td>
+          <td>
+            <button type="button" className="btn btn-danger btn-small" onClick={ () => this.removeItem(item.id) }>Удалить</button>
+          </td>
         </tr>
       )
     });
@@ -42,16 +50,20 @@ export default class Cart extends React.Component {
       <div>
         <h1 className="page-header">Корзина</h1>
         <table className="table table-striped">
-          <tr>
-            <th colSpan="2">Наименование</th>
-            <th>Количество</th>
-            <th>Цена</th>
-          </tr>
-          { itemList }
-          <tr>
-            <th className="text-right" colSpan="3">Итого</th>
-            <th>{ totalPrice }</th>
-          </tr>
+          <tbody>
+            <tr>
+              <th colSpan="2">Наименование</th>
+              <th>Количество</th>
+              <th>Цена</th>
+              <th></th>
+            </tr>
+            { itemList }
+            <tr>
+              <th className="text-right" colSpan="3">Итого</th>
+              <th>{ totalPrice }</th>
+              <th></th>
+            </tr>
+          </tbody>
         </table>
       </div>
     )

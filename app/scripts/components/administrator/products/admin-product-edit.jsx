@@ -34,12 +34,15 @@ export default class AdminProductEdit extends React.Component {
     this.setState({ product: product });
   }
 
-  handleChangeProduct(product) {
+  handleChangeProduct(product, images) {
     let product = product;
     ProductActions.save(product)
       .then(() => {
         this.context.router.transitionTo('administrator-category-products', { categoryId: product.category.id });
+        ProductActions.uploadImages(product.id, images);
       });
+
+    ProductActions.uploadImages(images);
   }
 
   render() {

@@ -1,7 +1,9 @@
 import React from 'react';
 import CategoryActions from 'actions/category';
 import CategoryProductsStore from 'stores/category-products';
+import ProductActions from 'actions/product';
 import { Link } from 'react-router';
+import ConfirmModal from 'components/common/confirm-modal';
 
 export default class AdminCategoryProducts extends React.Component {
   constructor() {
@@ -27,6 +29,11 @@ export default class AdminCategoryProducts extends React.Component {
     this.setState({products});
   }
 
+  removeProduct(product) {
+    ProductActions.delete(product.id)
+      .then(() => CategoryActions.loadProducts(product.category_id))
+  }
+
   render() {
     let products = this.state.products;
     let productList = products.map(product => {
@@ -37,6 +44,11 @@ export default class AdminCategoryProducts extends React.Component {
           </td>
           <td>{ product.price }</td>
           <td>{ product.discount }</td>
+          <td>
+              <ConfirmModal text="Удалить товар?" onYes={ () => this.removeProduct(product) }>
+                <button type="button" className="btn btn-small btn-danger">Удалить</button>
+              </ConfirmModal>
+          </td>
         </tr>
       )
     })
@@ -48,6 +60,7 @@ export default class AdminCategoryProducts extends React.Component {
             <th>Название</th>
             <th>Цена</th>
             <th>Скидка</th>
+            <th></th>
           </thead>
           <tbody>
             { productList }

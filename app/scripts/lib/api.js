@@ -29,7 +29,7 @@ let Api = {
   },
 
   path(path) {
-    return `http://ecom-back.herokuapp.com/api/v1/${path}`;
+    return `http://ecom/api/v1/${path}`;
   },
 
   patch(path, data) {
@@ -67,6 +67,20 @@ let Api = {
     });
 
     return Api.handleResponse(fetchPromise);
+  },
+
+  upload(path, files) {
+    let promises = [];
+    files.forEach(file => {
+      let form = new FormData();
+      form.append('file', file);
+      let promise = fetch(this.path(path), {
+        method: 'post',
+        body: form
+      });
+      promises.push(promise);
+    });
+    return Promise.all(promises);
   }
 }
 

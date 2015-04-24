@@ -13,10 +13,11 @@ export default class AdminProductAdd extends React.Component {
     this.handleProductChange = this.handleProductChange.bind(this);
   }
 
-  handleProductChange(product) {
+  handleProductChange(product, images) {
     ProductActions.create(product)
-      .then(() => {
+      .then((product) => {
         this.context.router.transitionTo('administrator-category-products', { categoryId: product.category_id });
+        ProductActions.uploadImages(product.id, images);
       });
   }
 
