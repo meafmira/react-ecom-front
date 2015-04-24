@@ -66,6 +66,9 @@ export default class AdminPostsCategory extends React.Component {
           { postsList }
           </tbody>
         </table>
+        <div className="btn-group">
+          <Link className="btn btn-primary" to="administrator-post-create" params={ {categoryId: this.context.router.getCurrentParams().categoryId} }>Добавить</Link>
+        </div>
       </div>
     )
   }

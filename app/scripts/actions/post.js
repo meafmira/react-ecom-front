@@ -4,6 +4,7 @@ import Api from 'lib/api';
 let PostActions = Reflux.createActions({
   loadOne: { asyncResult: true },
   save: { asyncResult: true },
+  create: { asyncResult: true },
   delete: { asyncResult: true }
 });
 
@@ -12,6 +13,12 @@ PostActions.loadOne.listen(function (postId) {
     .then(this.completed)
     .catch(this.failed);
 });
+
+PostActions.create.listen(function (post) {
+  Api.post(`posts`, post)
+    .then(this.completed)
+    .catch(this.failed);
+})
 
 PostActions.save.listen(function (post) {
   Api.patch(`posts/${post.id}`, post)

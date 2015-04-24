@@ -42,7 +42,6 @@ export default class AdminPostForm extends React.Component {
 
   render() {
     let post = this.state.post;
-    console.log("Post: ", post);
     return (
       <div>
         <h1 className="page-header">{ post.title }</h1>

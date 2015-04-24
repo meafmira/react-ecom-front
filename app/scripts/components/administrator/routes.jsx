@@ -11,6 +11,7 @@ import AdminPage from 'components/administrator/pages/admin-page';
 import AdminPostsCategory from 'components/administrator/posts/admin-posts-category';
 import AdminPostEdit from 'components/administrator/posts/admin-post-edit';
 import AdminProductAdd from 'components/administrator/products/admin-product-add'
+import AdminPostAdd from 'components/administrator/posts/admin-post-add'
 
 let AdministratorRoutes = (
   <Route path="/administrator" name="administrator" handler={ Administrator }>
@@ -42,6 +43,9 @@ let AdministratorRoutes = (
     <Route path="posts/:postId"
       name="administrator-post"
       handler={ AdminPostEdit } />
+    <Route path="posts-category/:categoryId/posts/create"
+      name="administrator-post-create"
+      handler={ AdminPostAdd } />
     <Route path="categories/:categoryId/products/create"
       name="administrator-product-create"
       handler={ AdminProductAdd } />
