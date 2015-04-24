@@ -3,8 +3,27 @@ import { Link } from 'react-router';
 import CartStore from 'stores/cart';
 import CartLink from 'components/main/cart/cart-link';
 import LoginLink from 'components/main/user/login-link';
+import SiteValueActions from 'actions/site-value'
+import SiteValueStore from 'stores/site-value'
 
 export default class Navbar extends React.Component {
+  constructor() {
+    this.onTitleLoaded = this.onTitleLoaded.bind(this);
+    this.state = {
+      title: 'Ecommerce'
+    }
+  }
+
+  componentDidMount() {
+    SiteValueActions.get(1);
+    SiteValueStore.listen(this.onTitleLoaded);
+  }
+
+  onTitleLoaded(siteValue) {
+    let title = siteValue.value;
+    this.setState({title});
+  }
+
   render() {
     return (
       <nav className="navbar navbar-default">
@@ -16,7 +35,7 @@ export default class Navbar extends React.Component {
               <span className="icon-bar"></span>
               <span className="icon-bar"></span>
             </button>
-            <Link className="navbar-brand" to="main">Ecommerce</Link>
+            <Link className="navbar-brand" to="main">{this.state.title}</Link>
           </div>
 
           <div className="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
