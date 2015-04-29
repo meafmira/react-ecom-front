@@ -1,5 +1,5 @@
 import React from 'react'
-import ProductThumb from 'components/main/products/product-thumb'
+import ProductList from 'components/main/products/product-list'
 import CategoryActions from 'actions/category'
 import CategoryStore from 'stores/category'
 
@@ -40,20 +40,12 @@ export default class ProductCategory extends React.Component {
       categoryDescription = <p className="lead">{ category.description }</p>
     }
 
-    let categoryProducts = category.products.map(product => {
-      return (
-        <div className="col-md-4" key={ product.id }>
-          <ProductThumb product={product} />
-        </div>
-      );
-    })
-
     return (
       <div>
         <h1 className="page-header">{ category.title }</h1>
         { categoryDescription }
         <div className="row">
-          { categoryProducts }
+          <ProductList products={ category.products } />
         </div>
       </div>
     )

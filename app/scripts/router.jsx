@@ -16,6 +16,7 @@ import LoginHandler from 'components/main/user/login-handler';
 import UserActions from 'actions/user';
 import Api from 'lib/api';
 import Order from 'components/main/cart/order';
+import ProductSearch from 'components/main/products/product-search';
 
 if (localStorage.token) {
 	Api.headers.Authorization = `Bearer ${localStorage.token}`;
@@ -35,6 +36,7 @@ var routes = (
 			<Route name="cart" handler={Cart} />
 			<Route name="order" handler={Order} />
 			<Route name="login" handler={LoginHandler} />
+			<Route name="search" path="search/:query" handler={ProductSearch} />
 		</Route>
 		{ AdministratorRoutes }
 	</Route>

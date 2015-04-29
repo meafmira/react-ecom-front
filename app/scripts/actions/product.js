@@ -7,7 +7,8 @@ let ProductActions = Reflux.createActions({
   save: { asyncResult: true },
   create: { asyncResult: true },
   uploadImages: { asyncResult: true },
-  delete: { asyncResult: true }
+  delete: { asyncResult: true },
+  search: { asyncResult: true }
 });
 
 ProductActions.loadOne.listen(function (productId) {
@@ -32,6 +33,10 @@ ProductActions.uploadImages.listen(function (productId, images) {
 
 ProductActions.delete.listen(function (productId) {
   this.promise(Api.delete(`products/${productId}`))
+});
+
+ProductActions.search.listen(function (query) {
+  this.promise(Api.get(`search/${query}`));
 })
 
 export default ProductActions;
