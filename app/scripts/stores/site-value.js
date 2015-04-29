@@ -5,6 +5,7 @@ let SiteValueStore = Reflux.createStore({
   listenables: SiteValueActions,
 
   onGetCompleted(value) {
+    document.title = value.value
     this.trigger(value)
   }
 })

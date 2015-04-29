@@ -9,6 +9,7 @@ export default class Cart extends React.Component {
       cart: CartStore.data
     }
     this.onCartUpdate = this.onCartUpdate.bind(this);
+    this.handleOrder = this.handleOrder.bind(this);
   }
 
   onCartUpdate(cart) {
@@ -25,6 +26,11 @@ export default class Cart extends React.Component {
 
   removeItem(itemId) {
     CartActions.remove(itemId);
+  }
+
+  handleOrder() {
+    CartActions.clear();
+    this.context.router.transitionTo('order');
   }
 
   render() {
@@ -65,7 +71,12 @@ export default class Cart extends React.Component {
             </tr>
           </tbody>
         </table>
+        <button disabled={ cart.items.length == 0 } className="btn btn-primary" onClick={ this.handleOrder }>Оформить заказ</button>
       </div>
     )
   }
 }
+
+Cart.contextTypes = {
+  router: React.PropTypes.func
+};

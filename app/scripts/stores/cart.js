@@ -40,6 +40,12 @@ let CartStore = Reflux.createStore({
     this.data.items = this.data.items.filter(item => item.id != productId);
     localStorage['cart'] = JSON.stringify(this.data);
     this.trigger(this.data);
+  },
+
+  onClear() {
+    this.data.items = [];
+    localStorage['cart'] = JSON.stringify(this.data);
+    this.trigger(this.data);
   }
 });
 

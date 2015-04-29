@@ -15,6 +15,7 @@ import Cart from 'components/main/cart/cart';
 import LoginHandler from 'components/main/user/login-handler';
 import UserActions from 'actions/user';
 import Api from 'lib/api';
+import Order from 'components/main/cart/order';
 
 if (localStorage.token) {
 	Api.headers.Authorization = `Bearer ${localStorage.token}`;
@@ -32,6 +33,7 @@ var routes = (
 			<Route name="post" path="posts/:postId" handler={Post} />
 	    <Route name="product-category" path="categories/:categoryId" handler={ProductCategory} />
 			<Route name="cart" handler={Cart} />
+			<Route name="order" handler={Order} />
 			<Route name="login" handler={LoginHandler} />
 		</Route>
 		{ AdministratorRoutes }
