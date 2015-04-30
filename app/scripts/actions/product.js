@@ -1,16 +1,19 @@
 import Reflux from 'reflux'
 import Api from 'lib/api'
 
+//создаем набор асинхронных действий
 let ProductActions = Reflux.createActions({
-  loadOne: { asyncResult: true },
-  loadLatest: { asyncResult: true },
-  save: { asyncResult: true },
-  create: { asyncResult: true },
-  uploadImages: { asyncResult: true },
-  delete: { asyncResult: true },
-  search: { asyncResult: true }
+  loadOne: { asyncResult: true }, //загрузка одного товара
+  loadLatest: { asyncResult: true }, //загрузка последних товаров
+  save: { asyncResult: true }, //сохранение товара
+  create: { asyncResult: true }, //создание товара
+  uploadImages: { asyncResult: true }, //загрузка изображения товара
+  delete: { asyncResult: true }, //удаление товара
+  search: { asyncResult: true } //поиск товаров
 });
 
+//слушаем действия и при получении ответа будет вызвано дейстие completed
+//при ошибке - действие failed
 ProductActions.loadOne.listen(function (productId) {
   this.promise(Api.get(`products/${productId}`))
 });

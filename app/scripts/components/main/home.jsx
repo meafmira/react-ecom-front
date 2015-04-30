@@ -1,3 +1,4 @@
+//подключение необходимых модулей
 import React from 'react';
 import ProductThumb from 'components/main/products/product-thumb';
 import HomeCategoriesStore from 'stores/home-categories';
@@ -13,7 +14,9 @@ class Home extends React.Component {
   }
 
   componentDidMount() {
+    //слушаем изменения в хранилище категорий для главной страницы
     this.unsubscribe = HomeCategoriesStore.listen(this.onLoadCategories);
+    //загружаем категории главной страницы
     CategoriesActions.loadHomeCategories();
   }
 
@@ -22,11 +25,13 @@ class Home extends React.Component {
   }
 
   onLoadCategories(categories) {
+    //при получении категорий меняем состояние компонента
     this.setState({ categories });
   }
 
   render() {
     let categories = this.state.categories;
+    //отображение категорий
     let categoryMap = categories.map(category => {
       let categoryProducts = category.limited_products;
       let categoryProductMap = categoryProducts.map(product => {
@@ -36,6 +41,7 @@ class Home extends React.Component {
           </div>
         )
       })
+      //отображение главной страницы
       return (
         <div className="panel panel-default" key={category.id}>
           <div className="panel-heading">

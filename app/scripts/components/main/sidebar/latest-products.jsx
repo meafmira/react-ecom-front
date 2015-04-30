@@ -12,11 +12,14 @@ export default class Latest extends React.Component {
   }
 
   onLoadLatest(latestProducts) {
+    //при загрузке товаров изменяем состояние компонента
     this.setState({ latestProducts });
   }
 
   componentDidMount() {
+    //слушаем изменения в хранилище последних товаров
     this.unsubscribe = LatestProductsStore.listen(this.onLoadLatest);
+    //загружаем последние товары
     ProductActions.loadLatest();
   }
 
@@ -26,6 +29,7 @@ export default class Latest extends React.Component {
 
   render () {
     let latestProducts = this.state.latestProducts;
+    //отображение списка товаров
     let latestProductsMap = latestProducts.map(product => {
       return <ProductThumb product={ product } key={ product.id } />;
     })

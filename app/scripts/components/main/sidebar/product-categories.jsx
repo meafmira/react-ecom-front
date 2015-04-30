@@ -10,11 +10,14 @@ export default class ProductCategories extends React.Component {
   }
 
   categoriesLoaded(categories) {
+    //при загрузке категорий изменяем состойние компонента
     this.setState({categories: categories});
   }
 
   componentDidMount() {
+    //загружаем все категории
     CategoriesActions.loadAll();
+    //слушаем изменения в хранилище категорий
     this.unsubscribeCategories = CategoriesStore.listen(this.categoriesLoaded);
   }
 
@@ -25,6 +28,7 @@ export default class ProductCategories extends React.Component {
   render () {
     let categories = this.state.categories;
 
+    //отображение списка категорий
     let categoryList = categories.map(category => {
       return (
         <li key={ category.id }>
