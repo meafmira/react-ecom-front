@@ -7,16 +7,19 @@ import SiteValueActions from 'actions/site-value'
 import SiteValueStore from 'stores/site-value'
 import PagesActions from 'actions/pages'
 import PagesStore from 'stores/pages'
+import classnames from 'classnames'
 
 export default class Navbar extends React.Component {
   constructor() {
     this.onTitleLoaded = this.onTitleLoaded.bind(this);
     this.state = {
       title: 'Ecommerce',
-      pages: []
+      pages: [],
+      menuOpen: false
     }
     this.handleSearch = this.handleSearch.bind(this);
     this.onPagesLoaded = this.onPagesLoaded.bind(this);
+    this.handleMenuOpen = this.handleMenuOpen.bind(this);
   }
 
   componentDidMount() {
@@ -45,6 +48,11 @@ export default class Navbar extends React.Component {
     this.setState({pages});
   }
 
+  handleMenuOpen(e) {
+    e.preventDefault();
+    this.setState({ menuOpen: !this.state.menuOpen });
+  }
+
   render() {
     let pagesList = this.state.pages.map(page => {
       return (
@@ -54,11 +62,13 @@ export default class Navbar extends React.Component {
       )
     });
 
+    let menuClasses = classnames('navbar-collapse', { collapse: !this.state.menuOpen });
+
     return (
       <nav className="navbar navbar-default">
         <div className="container-fluid">
           <div className="navbar-header">
-            <button type="button" className="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+            <button type="button" className="navbar-toggle collapsed" onClick={ this.handleMenuOpen }>
               <span className="sr-only">Toggle navigation</span>
               <span className="icon-bar"></span>
               <span className="icon-bar"></span>
@@ -67,7 +77,7 @@ export default class Navbar extends React.Component {
             <Link className="navbar-brand" to="main">{this.state.title}</Link>
           </div>
 
-          <div className="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <div className={ menuClasses } id="bs-example-navbar-collapse-1">
             <ul className="nav navbar-nav">
               { pagesList }
               <li>
