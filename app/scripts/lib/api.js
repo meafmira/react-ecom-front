@@ -29,7 +29,7 @@ let Api = {
   },
 
   path(path) {
-    return `http://ecom.herokuapp.com/api/v1/${path}`;
+    return `//ecom-back.herokuapp.com/api/v1/${path}`;
   },
 
   patch(path, data) {
